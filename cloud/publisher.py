@@ -29,8 +29,9 @@ ROOT = Path(__file__).resolve().parent.parent
 RESERVE = ROOT / "reserve"
 STATE = ROOT / "state"
 TZ = ZoneInfo("Europe/Paris")
-GRAPH = "https://graph.instagram.com"
-VER = os.environ.get("IG_GRAPH_VERSION", "v24.0")
+# Connexion unifiée (recommandée par Meta depuis 2026) : graph.facebook.com ; jeton « utilisateur système »
+GRAPH = os.environ.get("IG_API_HOST", "").strip() or "https://graph.facebook.com"
+VER = os.environ.get("IG_GRAPH_VERSION", "").strip() or "v27.0"
 
 
 def env(k, d=""):
@@ -95,6 +96,8 @@ def notify(kind, text):
 def maybe_refresh_token():
     """Jeton long Instagram : 60 jours, rafraîchissable s'il a ≥ 24 h et n'a pas expiré.
     Le nouveau jeton est écrit dans le secret GitHub via `gh secret set` (PAT dédié, droit Secrets: write)."""
+    if "graph.instagram.com" not in GRAPH:
+        return  # connexion unifiée : jeton sans expiration (choisi dans la configuration Meta)
     meta = load("token.json", {})
     last = meta.get("refreshed_at")
     if last and (now() - dt.datetime.fromisoformat(last)).days < 7:
