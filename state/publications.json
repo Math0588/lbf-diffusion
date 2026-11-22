@@ -37,5 +37,53 @@
     "media_id": "18092132294697708",
     "published_at": "2026-11-22T02:26:26.852164+01:00",
     "permalink": "https://www.instagram.com/reel/DgBnujdkptE/"
+  },
+  {
+    "episode_id": "mcv-s01e01",
+    "status": "published",
+    "attempt_at": "2026-11-22T08:02:02.894034+01:00",
+    "video_sha256": "48092151dc15538083c07f48399bac04844ae40dc47ffdf111dc7319ede71387",
+    "caption_head": "Les électeurs de Macron vont me détester (Emmanuel Macron, M",
+    "container_id": "18129316825677183",
+    "upload": "url_studio",
+    "media_id": "18132675076694218",
+    "published_at": "2026-11-22T08:02:58.377660+01:00",
+    "permalink": "https://www.instagram.com/reel/DgCOO8fCony/"
+  },
+  {
+    "episode_id": "glv-s01e01",
+    "status": "published",
+    "attempt_at": "2026-11-22T08:03:18.873076+01:00",
+    "video_sha256": "3a1b47f1e00b0e9075c32749710567d8b3659583f7ad97a3b1fa7b009f4ae798",
+    "caption_head": "Raphaël Glucksmann maire de sa propre ville : on a testé.\n\nH",
+    "container_id": "18129317425677183",
+    "upload": "url_studio",
+    "media_id": "18253012558311269",
+    "published_at": "2026-11-22T08:04:10.525576+01:00",
+    "permalink": "https://www.instagram.com/reel/DgCOX8WDozu/"
+  },
+  {
+    "episode_id": "bdv-s01e02",
+    "status": "published",
+    "attempt_at": "2026-11-22T08:04:31.003459+01:00",
+    "video_sha256": "28f487205c6300dceb39e7e879eaac3994b4c6794206b86471be762955022384",
+    "caption_head": "Les électeurs de Bardella vont me détester (Jordan Bardella,",
+    "container_id": "18129318160677183",
+    "upload": "url_studio",
+    "media_id": "18130898608867927",
+    "published_at": "2026-11-22T08:05:23.394586+01:00",
+    "permalink": "https://www.instagram.com/reel/DgCOgy4nKTA/"
+  },
+  {
+    "episode_id": "mlv-s01e01",
+    "status": "published",
+    "attempt_at": "2026-11-22T08:05:44.069950+01:00",
+    "video_sha256": "630b069db11ac1862b190fc95ac67dac5626584a65e7c5fcccc531ca7b18ee94",
+    "caption_head": "Mélenchonville : la ville où Jean-Luc Mélenchon décide de to",
+    "container_id": "18129319012677183",
+    "upload": "url_studio",
+    "media_id": "17898326652681625",
+    "published_at": "2026-11-22T08:07:15.971749+01:00",
+    "permalink": "https://www.instagram.com/reel/DgCOuCEgSqp/"
   }
 ]
