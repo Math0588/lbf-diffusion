@@ -25,5 +25,17 @@
       "thumb_offset_ms": 300,
       "caption_chars": 239
     }
+  },
+  {
+    "episode_id": "bdv-s01e01",
+    "status": "published",
+    "attempt_at": "2026-11-22T02:25:34.176463+01:00",
+    "video_sha256": "8b3474ba8db8ed3151e6ff6228b08c666b75726f74e770bd9b34aafb8158d787",
+    "caption_head": "Si Jordan Bardella gérait ta ville… 😭\n\nParodie de la politiq",
+    "container_id": "18129274966677183",
+    "upload": "url",
+    "media_id": "18092132294697708",
+    "published_at": "2026-11-22T02:26:26.852164+01:00",
+    "permalink": "https://www.instagram.com/reel/DgBnujdkptE/"
   }
 ]
