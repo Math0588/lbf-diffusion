@@ -169,13 +169,66 @@ def upload_video(uri: str, path: Path) -> dict:
     """Envoi direct du fichier à Instagram (protocole resumable, en une fois)."""
     data = path.read_bytes()
     req = urllib.request.Request(uri, data=data, method="POST", headers={
-        "Authorization": f"OAuth {env('IG_ACCESS_TOKEN')}", "offset": "0", "file_size": str(len(data)),
-        "Content-Type": "application/octet-stream"})
+        "Authorization": f"OAuth {env('IG_ACCESS_TOKEN')}", "offset": "0", "file_size": str(len(data))})
     try:
         with urllib.request.urlopen(req, timeout=600) as r:
             return json.loads(r.read().decode() or "{}")
     except urllib.error.HTTPError as e:
         raise ApiError(e.code, e.read().decode(errors="replace"))
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, *a, **k):
+        return None
+
+
+def signed_asset_url(name: str) -> str:
+    """Lien de téléchargement signé (quelques minutes) d'un fichier de la release privée. Le lien ne contient ni
+    le nom du dépôt ni celui du propriétaire ; seul Meta le voit, le temps de récupérer la vidéo."""
+    repo = env("GITHUB_REPOSITORY")
+    p = gh("api", f"repos/{repo}/releases/tags/{RELEASE}", "--jq",
+           f'.assets[] | select(.name=="{name}") | .url')
+    api_url = (p.stdout or "").strip()
+    if not api_url:
+        raise RuntimeError(f"{name} absent de la release privée")
+    req = urllib.request.Request(api_url, headers={
+        "Authorization": f"Bearer {env('GH_TOKEN') or env('GITHUB_TOKEN')}", "Accept": "application/octet-stream"})
+    try:
+        urllib.request.build_opener(_NoRedirect).open(req, timeout=30)
+    except urllib.error.HTTPError as e:
+        if e.code in (301, 302, 303, 307, 308) and e.headers.get("Location"):
+            return e.headers["Location"]
+        raise
+    raise RuntimeError("pas de lien signé renvoyé par GitHub")
+
+
+def wait_container(cid: str, minutes: int = 15) -> dict:
+    deadline = time.time() + minutes * 60
+    s = {}
+    while time.time() < deadline:
+        s = call("GET", cid, {"fields": "status_code,status"})
+        if s.get("status_code") in ("FINISHED", "ERROR", "EXPIRED"):
+            return s
+        time.sleep(20)
+    return s
+
+
+def create_container(ep_id: str, params: dict) -> tuple[str, str]:
+    """Crée le conteneur Reels et y met la vidéo. Méthode « url » (lien signé, défaut) ou « resumable »
+    (envoi direct). Renvoie (id du conteneur, méthode utilisée)."""
+    user_id = env("IG_USER_ID")
+    method = env("IG_UPLOAD_METHOD") or "url"
+    if method == "resumable":
+        video = ensure_local(ep_id)
+        c = call("POST", f"{user_id}/media", {**params, "media_type": "REELS", "upload_type": "resumable"})
+        uri = c.get("uri") or f"https://rupload.facebook.com/ig-api-upload/{VER}/{c['id']}"
+        try:
+            upload_video(uri, video)
+            return c["id"], "resumable"
+        except ApiError as e:
+            log(f"Envoi direct refusé ({e.status}) : bascule sur le lien signé")
+    c = call("POST", f"{user_id}/media", {**params, "media_type": "REELS", "video_url": signed_asset_url(f"{ep_id}.mp4")})
+    return c["id"], "url"
 
 
 def next_episode(queue, pubs, assets=frozenset()):
@@ -227,17 +280,10 @@ def publish_one(item, pubs):
     log(f"Quota : {lim}")
     pubs.append(pub)
     save("publications.json", pubs)
-    video = ensure_local(ep_id)
-    c = call("POST", f"{user_id}/media", {"media_type": "REELS", "upload_type": "resumable", "caption": caption,
-                                           "thumb_offset": thumb, "share_to_feed": "true"})
-    pub["container_id"] = c["id"]
+    cid, how = create_container(ep_id, {"caption": caption, "thumb_offset": thumb, "share_to_feed": "true"})
+    c = {"id": cid}
+    pub.update(container_id=cid, upload=how)
     save("publications.json", pubs)
-    uri = c.get("uri") or f"https://rupload.facebook.com/ig-api-upload/{VER}/{c['id']}"
-    up = upload_video(uri, video)
-    if up.get("success") is False:
-        pub.update(status="failed", error=f"envoi refusé : {str(up)[:200]}")
-        notify("publication", f"{ep_id} : envoi de la vidéo refusé par Instagram")
-        return pub
     deadline = time.time() + 15 * 60
     status = ""
     while time.time() < deadline:
@@ -335,28 +381,26 @@ def cleanup(pubs, assets=frozenset()):
 
 
 def check_upload():
-    """Vérification sans publication : conteneur + envoi direct + traitement Meta, puis arrêt AVANT media_publish.
-    Le conteneur non publié expire seul sous 24 h ; rien n'apparaît sur le compte."""
+    """Vérification sans publication : pour chaque méthode d'envoi, conteneur + vidéo + traitement Meta, puis arrêt
+    AVANT media_publish. Les conteneurs non publiés expirent seuls sous 24 h ; rien n'apparaît sur le compte."""
     queue = json.loads((RESERVE / "queue.json").read_text(encoding="utf-8")) if (RESERVE / "queue.json").exists() else []
     item = next_episode(queue, load("publications.json", []), release_assets())
     if not item:
         log("CHECK : aucune vidéo dans la réserve")
         return 1
-    ep_id, user_id = item["episode_id"], env("IG_USER_ID")
-    video = ensure_local(ep_id)
-    log(f"CHECK : vidéo {ep_id} téléchargée ({video.stat().st_size} octets)")
-    c = call("POST", f"{user_id}/media", {"media_type": "REELS", "upload_type": "resumable",
-                                           "caption": "vérification technique", "share_to_feed": "false"})
-    uri = c.get("uri") or f"https://rupload.facebook.com/ig-api-upload/{VER}/{c['id']}"
-    log(f"CHECK : conteneur créé, envoi → {uri.split('?')[0].rsplit('/', 1)[0]}/…")
-    log(f"CHECK : réponse envoi {upload_video(uri, video)}")
-    for _ in range(45):
-        s = call("GET", c["id"], {"fields": "status_code,status"})
-        if s.get("status_code") in ("FINISHED", "ERROR", "EXPIRED"):
-            break
-        time.sleep(20)
-    log(f"CHECK : statut final {s.get('status_code')} ({s.get('status')}) — non publié (vérification)")
-    return 0 if s.get("status_code") == "FINISHED" else 1
+    ep_id, ok = item["episode_id"], []
+    for method in ("url", "resumable"):
+        os.environ["IG_UPLOAD_METHOD"] = method
+        try:
+            cid, how = create_container(ep_id, {"caption": "vérification technique", "share_to_feed": "false"})
+            st = wait_container(cid, 12)
+            log(f"CHECK {method} : méthode effective {how}, statut {st.get('status_code')} ({st.get('status')})")
+            if st.get("status_code") == "FINISHED" and how == method:
+                ok.append(method)
+        except Exception as e:
+            log(f"CHECK {method} : échec {type(e).__name__} {str(e)[:200]}")
+    log(f"CHECK : méthodes qui fonctionnent : {ok or 'aucune'} — rien n'a été publié")
+    return 0 if ok else 1
 
 
 def main():
