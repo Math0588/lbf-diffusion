@@ -1,0 +1,26 @@
+# Horloge du diffuseur (sans Claude, sans jeton) : publie aux créneaux, se relance seule.
+# Ne tourne QUE si le dépôt est public (minutes gratuites) ; démarre seule au passage en public.
+name: Horloge
+on:
+  public:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 */2 * * *"   # filet de sécurité si la chaîne s'arrête
+permissions:
+  actions: write
+  contents: read
+concurrency:
+  group: horloge
+  cancel-in-progress: ${{ github.event_name == 'public' || (github.event_name == 'workflow_dispatch' && github.actor != 'github-actions[bot]') }}
+jobs:
+  horloge:
+    # dépôt privé : tâche ignorée, aucune minute consommée
+    if: ${{ github.event.repository.private == false }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Horloge (≈ 5 h 40, puis relève)
+        run: python3 cloud/horloge.py
