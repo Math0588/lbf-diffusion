@@ -351,8 +351,9 @@ def main():
     cleanup(pubs, assets)
     today = now().date().isoformat()
     slots = control.get("slots") or [x.strip() for x in env("PUBLISH_SLOTS", "12:30,19:00").split(",") if x.strip()]
-    done_today = [p for p in pubs if p.get("attempt_at", "")[:10] == today and
-                  p["status"] in ("published", "publishing", "simulated", "publication_uncertain")]
+    counted = ("published", "publishing", "publication_uncertain") + \
+        (() if env("LIVE_PUBLISH") == "true" else ("simulated",))   # un essai à blanc n'occupe pas un vrai créneau
+    done_today = [p for p in pubs if p.get("attempt_at", "")[:10] == today and p["status"] in counted]
     passed = [s for s in slots if (now().hour, now().minute) >= tuple(map(int, s.split(":")))]
     if "--force" not in sys.argv:
         if len(done_today) >= len(passed):
