@@ -1,9 +1,9 @@
 """Diffuseur cloud — publie la réserve sur Instagram, même PC éteint.
 
 Tourne dans GitHub Actions (cron horaire), bibliothèque standard Python uniquement.
-API : Instagram API with Instagram Login (graph.instagram.com), permissions instagram_business_basic +
-instagram_business_content_publish. La vidéo doit être accessible publiquement : elle est servie par
-GitHub Pages depuis ce dépôt (PAGES_BASE_URL).
+API Instagram (graph.facebook.com, Page Facebook reliée ou connexion unifiée). Le dépôt est PRIVÉ : aucune
+adresse publique. La vidéo est stockée comme fichier de la release privée « reserve » du dépôt, téléchargée
+dans le runner, puis envoyée directement à Instagram (envoi « resumable » vers rupload.facebook.com).
 
 Garanties :
 - LIVE_PUBLISH != "true"  → simulation explicite, jamais de statut « published ».
@@ -128,7 +128,57 @@ def maybe_refresh_token():
 
 # ----------------------------------------------------------------------------- publication
 
-def next_episode(queue, pubs):
+RELEASE = "reserve"
+
+
+def gh(*args):
+    import subprocess
+    return subprocess.run(["gh", *args], capture_output=True, text=True,
+                          env={**os.environ, "GH_TOKEN": env("GH_TOKEN") or env("GITHUB_TOKEN")})
+
+
+def release_assets() -> set:
+    """Noms des vidéos disponibles dans la release privée (vide si gh indisponible : on se fie au disque)."""
+    try:
+        p = gh("release", "view", RELEASE, "--json", "assets")
+    except FileNotFoundError:
+        return set()
+    if p.returncode != 0:
+        return set()
+    return {a["name"] for a in json.loads(p.stdout or "{}").get("assets", [])}
+
+
+def has_video(ep_id, assets) -> bool:
+    return (RESERVE / ep_id / "video.mp4").exists() or f"{ep_id}.mp4" in assets
+
+
+def ensure_local(ep_id) -> Path:
+    """Télécharge la vidéo de la release privée dans reserve/<id>/video.mp4 (jamais versionnée)."""
+    dst = RESERVE / ep_id / "video.mp4"
+    if dst.exists():
+        return dst
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    p = gh("release", "download", RELEASE, "-p", f"{ep_id}.mp4", "-D", str(dst.parent), "--clobber")
+    if p.returncode != 0:
+        raise RuntimeError(f"vidéo introuvable dans la release privée ({p.stderr.strip()[:150]})")
+    (dst.parent / f"{ep_id}.mp4").rename(dst)
+    return dst
+
+
+def upload_video(uri: str, path: Path) -> dict:
+    """Envoi direct du fichier à Instagram (protocole resumable, en une fois)."""
+    data = path.read_bytes()
+    req = urllib.request.Request(uri, data=data, method="POST", headers={
+        "Authorization": f"OAuth {env('IG_ACCESS_TOKEN')}", "offset": "0", "file_size": str(len(data)),
+        "Content-Type": "application/octet-stream"})
+    try:
+        with urllib.request.urlopen(req, timeout=600) as r:
+            return json.loads(r.read().decode() or "{}")
+    except urllib.error.HTTPError as e:
+        raise ApiError(e.code, e.read().decode(errors="replace"))
+
+
+def next_episode(queue, pubs, assets=frozenset()):
     done = {p["episode_id"] for p in pubs if p["status"] in ("published", "publication_uncertain", "failed")}
     fresh = []
     for item in queue:
@@ -138,7 +188,7 @@ def next_episode(queue, pubs):
         fresh.append(item)
     queue = sorted(fresh, key=lambda i: 0 if i.get("urgent") else 1)
     for item in queue:
-        if item["episode_id"] not in done and (RESERVE / item["episode_id"] / "video.mp4").exists():
+        if item["episode_id"] not in done and has_video(item["episode_id"], assets):
             return item
     return None
 
@@ -161,27 +211,33 @@ def publish_one(item, pubs):
     folder = RESERVE / ep_id
     caption = (folder / "caption.txt").read_text(encoding="utf-8")
     manifest = json.loads((folder / "manifest.json").read_text(encoding="utf-8"))
-    base = env("PAGES_BASE_URL").rstrip("/")
-    video_url = f"{base}/reserve/{ep_id}/video.mp4"
-    cover_url = f"{base}/reserve/{ep_id}/cover.jpg"
+    thumb = int(manifest.get("thumb_offset_ms", 300))
     pub = {"episode_id": ep_id, "status": "publishing", "attempt_at": now().isoformat(),
            "video_sha256": manifest.get("video_sha256"), "caption_head": caption[:60]}
 
     if env("LIVE_PUBLISH") != "true":
         pub.update(status="simulated", note="LIVE_PUBLISH=false : aucune requête envoyée à Instagram",
-                   would_post={"video_url": video_url, "cover_url": cover_url, "caption_chars": len(caption)})
+                   would_post={"upload": "resumable", "video": f"release {RELEASE}/{ep_id}.mp4",
+                               "thumb_offset_ms": thumb, "caption_chars": len(caption)})
         pubs.append(pub)
-        log(f"SIMULATION {ep_id} → {video_url}")
+        log(f"SIMULATION {ep_id} → envoi direct (release privée {RELEASE}/{ep_id}.mp4)")
         return pub
 
     lim = call("GET", f"{user_id}/content_publishing_limit", {"fields": "quota_usage,config"})
     log(f"Quota : {lim}")
     pubs.append(pub)
     save("publications.json", pubs)
-    c = call("POST", f"{user_id}/media", {"media_type": "REELS", "video_url": video_url, "caption": caption,
-                                           "cover_url": cover_url, "share_to_feed": "true"})
+    video = ensure_local(ep_id)
+    c = call("POST", f"{user_id}/media", {"media_type": "REELS", "upload_type": "resumable", "caption": caption,
+                                           "thumb_offset": thumb, "share_to_feed": "true"})
     pub["container_id"] = c["id"]
     save("publications.json", pubs)
+    uri = c.get("uri") or f"https://rupload.facebook.com/ig-api-upload/{VER}/{c['id']}"
+    up = upload_video(uri, video)
+    if up.get("success") is False:
+        pub.update(status="failed", error=f"envoi refusé : {str(up)[:200]}")
+        notify("publication", f"{ep_id} : envoi de la vidéo refusé par Instagram")
+        return pub
     deadline = time.time() + 15 * 60
     status = ""
     while time.time() < deadline:
@@ -229,7 +285,7 @@ def publish_youtube(item):
     caption = (folder / "caption.txt").read_text(encoding="utf-8")
     title = caption.splitlines()[0][:90]
     try:
-        r = youtube.upload(folder / "video.mp4", title, caption, ["satire", "humour", "politique", "danscetteville"])
+        r = youtube.upload(ensure_local(item["episode_id"]), title, caption, ["satire", "humour", "politique", "danscetteville"])
         yts.append({"episode_id": item["episode_id"], "at": now().isoformat(), **r})
         log(f"YouTube : {r.get('url')} ({r.get('privacy')})")
     except Exception as e:
@@ -262,23 +318,27 @@ def collect_metrics(pubs):
     save("metrics.json", snaps)
 
 
-def cleanup(pubs):
-    """Supprime de la réserve les vidéos publiées depuis > 3 jours (dépôt léger, Pages < 1 Go)."""
+def cleanup(pubs, assets=frozenset()):
+    """Supprime de la réserve (dossier + vidéo de la release privée) les épisodes publiés depuis > 3 jours."""
     import shutil
     for p in pubs:
         if p.get("status") == "published" and p.get("published_at"):
             age = now() - dt.datetime.fromisoformat(p["published_at"].replace("Z", "+00:00"))
+            if age.days < 3:
+                continue
             d = RESERVE / p["episode_id"]
-            if age.days >= 3 and d.exists():
+            if d.exists():
                 shutil.rmtree(d)
                 log(f"Réserve nettoyée : {p['episode_id']}")
+            if f"{p['episode_id']}.mp4" in assets:
+                gh("release", "delete-asset", RELEASE, f"{p['episode_id']}.mp4", "-y")
 
 
 def main():
     control = load("control.json", {"paused": False, "slot": "18:30"})
     pubs = load("publications.json", [])
     queue = json.loads((RESERVE / "queue.json").read_text(encoding="utf-8")) if (RESERVE / "queue.json").exists() else []
-    missing = [k for k in ("IG_ACCESS_TOKEN", "IG_USER_ID", "PAGES_BASE_URL") if not env(k)]
+    missing = [k for k in ("IG_ACCESS_TOKEN", "IG_USER_ID") if not env(k)]
     if env("LIVE_PUBLISH") == "true" and missing:
         notify("configuration", f"Configuration requise : secrets manquants {missing}")
         return 0
@@ -287,7 +347,8 @@ def main():
         return 0
     maybe_refresh_token()
     collect_metrics(pubs)
-    cleanup(pubs)
+    assets = release_assets()
+    cleanup(pubs, assets)
     today = now().date().isoformat()
     slots = control.get("slots") or [x.strip() for x in env("PUBLISH_SLOTS", "12:30,19:00").split(",") if x.strip()]
     done_today = [p for p in pubs if p.get("attempt_at", "")[:10] == today and
@@ -302,12 +363,12 @@ def main():
             if (now() - last).total_seconds() < 3 * 3600:
                 log("Moins de 3 h depuis la dernière publication : pas de rafale après une panne.")
                 return 0
-    item = next_episode(queue, pubs)
+    item = next_episode(queue, pubs, assets)
     if not item:
         notify("reserve", "Réserve vide : aucune vidéo prête. Allumer le PC pour produire.")
         save("publications.json", pubs)
         return 0
-    remaining = len([q for q in queue if (RESERVE / q["episode_id"] / "video.mp4").exists()]) - 1
+    remaining = len([q for q in queue if has_video(q["episode_id"], assets)]) - 1
     if remaining < 3:
         notify("reserve", f"Réserve basse : {remaining} vidéo(s) après celle-ci.")
     pub = publish_one(item, pubs)
