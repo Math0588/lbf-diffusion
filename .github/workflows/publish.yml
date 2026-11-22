@@ -25,6 +25,10 @@ jobs:
     timeout-minutes: 70
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: État le plus récent (évite les doublons quand deux passages se suivent)
+        run: git pull -q --rebase origin main || true
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
