@@ -325,5 +325,19 @@
     "upload": "url_studio",
     "error": "Error: Media upload has failed with error code 2207003",
     "_this_run": true
+  },
+  {
+    "episode_id": "mcv-s01e04",
+    "status": "published",
+    "attempt_at": "2026-11-22T13:17:05.133762+01:00",
+    "video_sha256": "9f8c0d72f20a66ce0ab126877c9bc4101782ab87338cab88b23a233c4179407f",
+    "caption_head": "Les électeurs de Macron vont me détester (Emmanuel Macron, M",
+    "duration_s": 28.733333,
+    "container_id": "18129368260677183",
+    "upload": "url_studio",
+    "media_id": "18102181256442449",
+    "published_at": "2026-11-22T13:18:37.275346+01:00",
+    "permalink": "https://www.instagram.com/reel/DgCyXrFjK7g/",
+    "_this_run": true
   }
 ]
