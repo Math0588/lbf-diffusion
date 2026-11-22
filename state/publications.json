@@ -173,5 +173,19 @@
     "published_at": "2026-11-22T12:14:26.577343+01:00",
     "permalink": "https://www.instagram.com/reel/DgCrA95Dzao/",
     "_this_run": true
+  },
+  {
+    "episode_id": "mlv-s01e02",
+    "status": "published",
+    "attempt_at": "2026-11-22T12:18:42.086480+01:00",
+    "video_sha256": "03f62191378ba8ea6efb8d763c0820be05492ed4200c5793c97c6e75303e169c",
+    "caption_head": "Les électeurs de Mélenchon vont me détester (Jean-Luc Mélenc",
+    "duration_s": 33.4,
+    "container_id": "18129355291677183",
+    "upload": "url_studio",
+    "media_id": "18099861149447141",
+    "published_at": "2026-11-22T12:19:36.675427+01:00",
+    "permalink": "https://www.instagram.com/reel/DgCrnD4gr-5/",
+    "_this_run": true
   }
 ]
