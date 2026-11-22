@@ -213,5 +213,15 @@
     "at": "2026-11-22T13:37:57.801230+01:00",
     "kind": "reserve",
     "text": "Réserve vide : aucune vidéo prête (la fabrication cloud tourne 5 fois par jour)."
+  },
+  {
+    "at": "2026-11-22T14:04:42.351020+01:00",
+    "kind": "reserve",
+    "text": "Réserve basse : 2 vidéo(s) après celle-ci."
+  },
+  {
+    "at": "2026-11-22T14:05:56.572420+01:00",
+    "kind": "reserve",
+    "text": "Réserve vide : aucune vidéo prête (la fabrication cloud tourne 5 fois par jour)."
   }
 ]
