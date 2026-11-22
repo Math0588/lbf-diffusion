@@ -14,6 +14,10 @@ on:
         description: "Vérifier l'envoi à Instagram sans publier"
         type: boolean
         default: false
+      episode:
+        description: "Publier cet épisode précis (identifiant, ex. mcv-u01)"
+        type: string
+        default: ""
 permissions:
   contents: write
 concurrency:
@@ -39,6 +43,7 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           GH_SECRETS_TOKEN: ${{ secrets.GH_SECRETS_TOKEN }}
           GH_TOKEN: ${{ github.token }}
+          ONLY_EPISODE: ${{ inputs.episode }}
           IG_UPLOAD_METHOD: ${{ vars.IG_UPLOAD_METHOD }}
           IG_GRAPH_VERSION: ${{ vars.IG_GRAPH_VERSION }}
           IG_API_HOST: ${{ vars.IG_API_HOST }}

@@ -282,6 +282,13 @@ def next_episode(queue, pubs, assets=frozenset(), studio=None):
             fails[p["episode_id"]] = fails.get(p["episode_id"], 0) + 1
     done = {p["episode_id"] for p in pubs if p["status"] in ("published", "publication_uncertain")} \
         | {e for e, n in fails.items() if n >= 2} | {p["episode_id"] for p in pubs if p.get("_this_run")}
+    # 0) épisode demandé à la main (entrée « episode » du workflow) : prioritaire, s'il existe dans le studio
+    wanted = env("ONLY_EPISODE")
+    if wanted:
+        for it in studio or []:
+            if it["id"] == wanted and wanted not in done:
+                return {"episode_id": it["id"], "source": "studio", "title": it.get("title")}
+        return None
     # 1) vidéos du studio cloud, dans l'ordre de fabrication (elles remplacent les anciennes versions locales)
     for it in studio or []:
         if it["id"] not in done:
