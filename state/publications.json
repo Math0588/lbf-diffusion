@@ -299,5 +299,19 @@
     "published_at": "2026-11-22T12:55:36.800921+01:00",
     "permalink": "https://www.instagram.com/reel/DgCvuf_CCUm/",
     "_this_run": true
+  },
+  {
+    "episode_id": "glv-s01e02",
+    "status": "published",
+    "attempt_at": "2026-11-22T13:03:54.188451+01:00",
+    "video_sha256": "6bb5daedbd04fd0140451de9b17f75bd4fe80da3c07ab98a67ed962ff6c7c904",
+    "caption_head": "Si Raphaël Glucksmann gérait ta ville… 😭\n\nHumour politique e",
+    "duration_s": 35.066667,
+    "container_id": "18129365359677183",
+    "upload": "url_studio",
+    "media_id": "18034335767684506",
+    "published_at": "2026-11-22T13:04:46.702380+01:00",
+    "permalink": "https://www.instagram.com/reel/DgCwxWuFNTL/",
+    "_this_run": true
   }
 ]
