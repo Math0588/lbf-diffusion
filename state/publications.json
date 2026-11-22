@@ -257,5 +257,19 @@
     "published_at": "2026-11-22T12:45:00.018554+01:00",
     "permalink": "https://www.instagram.com/reel/DgCug8qCDvm/",
     "_this_run": true
+  },
+  {
+    "episode_id": "bdv-s01e03",
+    "status": "published",
+    "attempt_at": "2026-11-22T12:47:06.458549+01:00",
+    "video_sha256": "7aa33bb89e62fe53a765d79f202e88e0559b4a6660529735be182cf7b4e9d10f",
+    "caption_head": "Les électeurs de Bardella vont me détester (Jordan Bardella,",
+    "duration_s": 29.733333,
+    "container_id": "18129362341677183",
+    "upload": "url_studio",
+    "media_id": "17917157775285272",
+    "published_at": "2026-11-22T12:47:58.404208+01:00",
+    "permalink": "https://www.instagram.com/reel/DgCu2fID8sv/",
+    "_this_run": true
   }
 ]
