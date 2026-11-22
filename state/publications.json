@@ -11,5 +11,19 @@
       "cover_url": "https://math0588.github.io/lbf-diffusion/reserve/bdv-s01e01/cover.jpg",
       "caption_chars": 239
     }
+  },
+  {
+    "episode_id": "bdv-s01e01",
+    "status": "simulated",
+    "attempt_at": "2026-11-22T01:39:30.934176+01:00",
+    "video_sha256": "8b3474ba8db8ed3151e6ff6228b08c666b75726f74e770bd9b34aafb8158d787",
+    "caption_head": "Pire ville jusqu'ici : Bardellaville ou Macronville ? Défend",
+    "note": "LIVE_PUBLISH=false : aucune requête envoyée à Instagram",
+    "would_post": {
+      "upload": "resumable",
+      "video": "release reserve/bdv-s01e01.mp4",
+      "thumb_offset_ms": 300,
+      "caption_chars": 239
+    }
   }
 ]
