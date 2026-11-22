@@ -1,0 +1,17 @@
+{
+  "episode_id": "glv-s01e01",
+  "status": "qa_passed",
+  "published": false,
+  "video_sha256": "06386859ce62e782a63301212c544fc230612e0bca0a31b3bad14fa0347d6272",
+  "duration_s": 29.666667,
+  "size_mb": 9.4,
+  "cover": "cover.jpg",
+  "caption_file": "caption.txt",
+  "disclosure": "",
+  "platform_flags": {
+    "ai_label": false,
+    "paid_partnership": false
+  },
+  "youtube_shorts_compatible": true,
+  "created_at": "2026-11-22T02:20:07+0100"
+}
