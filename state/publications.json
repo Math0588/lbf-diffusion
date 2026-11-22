@@ -313,5 +313,17 @@
     "published_at": "2026-11-22T13:04:46.702380+01:00",
     "permalink": "https://www.instagram.com/reel/DgCwxWuFNTL/",
     "_this_run": true
+  },
+  {
+    "episode_id": "mcv-m010",
+    "status": "failed",
+    "attempt_at": "2026-11-22T13:09:49.391990+01:00",
+    "video_sha256": "aa14527ba45dc674bf13b71091388d28dfee5e4a6c2611614e98d7d565e00b49",
+    "caption_head": "Si Emmanuel Macron gérait ta ville… 😭\n\nHumour politique en a",
+    "duration_s": 29.133333,
+    "container_id": "18129367039677183",
+    "upload": "url_studio",
+    "error": "Error: Media upload has failed with error code 2207003",
+    "_this_run": true
   }
 ]

@@ -183,5 +183,20 @@
     "at": "2026-11-22T13:05:07.006005+01:00",
     "kind": "reserve",
     "text": "Réserve vide : aucune vidéo prête (la fabrication cloud tourne 5 fois par jour)."
+  },
+  {
+    "at": "2026-11-22T13:09:48.996692+01:00",
+    "kind": "reserve",
+    "text": "Réserve basse : 1 vidéo(s) après celle-ci."
+  },
+  {
+    "at": "2026-11-22T13:10:12.184527+01:00",
+    "kind": "publication",
+    "text": "mcv-m010 : conteneur ERROR (Error: Media upload has failed with error code 2207003)"
+  },
+  {
+    "at": "2026-11-22T13:10:32.189058+01:00",
+    "kind": "reserve",
+    "text": "Réserve vide : aucune vidéo prête (la fabrication cloud tourne 5 fois par jour)."
   }
 ]
