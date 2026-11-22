@@ -1,0 +1,17 @@
+{
+  "episode_id": "mcv-s01e01",
+  "status": "qa_passed",
+  "published": false,
+  "video_sha256": "9ea29732e39bf6c55f68d97eb20710858faf7b3fc71fe644406e6032411a2275",
+  "duration_s": 30.7,
+  "size_mb": 9.09,
+  "cover": "cover.jpg",
+  "caption_file": "caption.txt",
+  "disclosure": "",
+  "platform_flags": {
+    "ai_label": false,
+    "paid_partnership": false
+  },
+  "youtube_shorts_compatible": true,
+  "created_at": "2026-11-22T02:12:20+0100"
+}
