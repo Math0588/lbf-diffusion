@@ -3,7 +3,7 @@
 name: Publication quotidienne
 on:
   schedule:
-    - cron: "33 * * * *"
+    - cron: "3,33 * * * *"
   workflow_dispatch:
     inputs:
       force:
