@@ -107,5 +107,18 @@
     "container_id": "18129338170677183",
     "upload": "url_studio",
     "error": "Error: Media upload has failed with error code 2207077"
+  },
+  {
+    "episode_id": "mcv-s01e02",
+    "status": "published",
+    "attempt_at": "2026-11-22T10:32:54.010451+01:00",
+    "video_sha256": "b7b801e0698ee5344fbbd67aa3be861d5ba6be84db30f42432620dd59ce9e334",
+    "caption_head": "Emmanuel Macron maire de sa propre ville : on a testé.\n\nParo",
+    "container_id": "18129339265677183",
+    "upload": "url_studio",
+    "media_id": "17977755426174947",
+    "published_at": "2026-11-22T10:33:45.516916+01:00",
+    "permalink": "https://www.instagram.com/reel/DgCffqhEixm/",
+    "_this_run": true
   }
 ]

@@ -43,5 +43,15 @@
     "at": "2026-11-22T10:28:12.661853+01:00",
     "kind": "publication",
     "text": "bdv-m001 : conteneur ERROR (Error: Media upload has failed with error code 2207077)"
+  },
+  {
+    "at": "2026-11-22T10:32:53.720024+01:00",
+    "kind": "reserve",
+    "text": "Réserve basse : 1 vidéo(s) après celle-ci."
+  },
+  {
+    "at": "2026-11-22T10:34:05.803978+01:00",
+    "kind": "reserve",
+    "text": "Réserve vide : aucune vidéo prête (la fabrication cloud tourne 5 fois par jour)."
   }
 ]
