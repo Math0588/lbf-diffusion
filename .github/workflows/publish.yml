@@ -10,6 +10,10 @@ on:
         description: "Publier maintenant (ignore le créneau)"
         type: boolean
         default: false
+      check:
+        description: "Vérifier l'envoi à Instagram sans publier"
+        type: boolean
+        default: false
 permissions:
   contents: write
 concurrency:
@@ -37,7 +41,7 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-        run: python cloud/publisher.py ${{ inputs.force && '--force' || '' }}
+        run: python cloud/publisher.py ${{ inputs.force && '--force' || '' }} ${{ inputs.check && '--check' || '' }}
       - name: Enregistrer l'état (garde aussi le dépôt actif pour le cron)
         run: |
           git config user.name "lbf-diffuseur"

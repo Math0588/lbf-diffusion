@@ -334,7 +334,34 @@ def cleanup(pubs, assets=frozenset()):
                 gh("release", "delete-asset", RELEASE, f"{p['episode_id']}.mp4", "-y")
 
 
+def check_upload():
+    """Vérification sans publication : conteneur + envoi direct + traitement Meta, puis arrêt AVANT media_publish.
+    Le conteneur non publié expire seul sous 24 h ; rien n'apparaît sur le compte."""
+    queue = json.loads((RESERVE / "queue.json").read_text(encoding="utf-8")) if (RESERVE / "queue.json").exists() else []
+    item = next_episode(queue, load("publications.json", []), release_assets())
+    if not item:
+        log("CHECK : aucune vidéo dans la réserve")
+        return 1
+    ep_id, user_id = item["episode_id"], env("IG_USER_ID")
+    video = ensure_local(ep_id)
+    log(f"CHECK : vidéo {ep_id} téléchargée ({video.stat().st_size} octets)")
+    c = call("POST", f"{user_id}/media", {"media_type": "REELS", "upload_type": "resumable",
+                                           "caption": "vérification technique", "share_to_feed": "false"})
+    uri = c.get("uri") or f"https://rupload.facebook.com/ig-api-upload/{VER}/{c['id']}"
+    log(f"CHECK : conteneur créé, envoi → {uri.split('?')[0].rsplit('/', 1)[0]}/…")
+    log(f"CHECK : réponse envoi {upload_video(uri, video)}")
+    for _ in range(45):
+        s = call("GET", c["id"], {"fields": "status_code,status"})
+        if s.get("status_code") in ("FINISHED", "ERROR", "EXPIRED"):
+            break
+        time.sleep(20)
+    log(f"CHECK : statut final {s.get('status_code')} ({s.get('status')}) — non publié (vérification)")
+    return 0 if s.get("status_code") == "FINISHED" else 1
+
+
 def main():
+    if "--check" in sys.argv:
+        return check_upload()
     control = load("control.json", {"paused": False, "slot": "18:30"})
     pubs = load("publications.json", [])
     queue = json.loads((RESERVE / "queue.json").read_text(encoding="utf-8")) if (RESERVE / "queue.json").exists() else []
