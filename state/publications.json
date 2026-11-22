@@ -271,5 +271,33 @@
     "published_at": "2026-11-22T12:47:58.404208+01:00",
     "permalink": "https://www.instagram.com/reel/DgCu2fID8sv/",
     "_this_run": true
+  },
+  {
+    "episode_id": "zmv-s01e02",
+    "status": "published",
+    "attempt_at": "2026-11-22T12:53:33.523168+01:00",
+    "video_sha256": "aad31920d21b7bf439c3871aed44422a7dcbf67875e068da7a2fc4d122db4198",
+    "caption_head": "Éric Zemmour maire de sa propre ville : on a testé.\n\nParodie",
+    "duration_s": 37.733333,
+    "container_id": "18129363511677183",
+    "upload": "url_studio",
+    "media_id": "18111274544350781",
+    "published_at": "2026-11-22T12:54:23.204722+01:00",
+    "permalink": "https://www.instagram.com/reel/DgCvlxsDFlg/",
+    "_this_run": true
+  },
+  {
+    "episode_id": "glv-s01e28",
+    "status": "published",
+    "attempt_at": "2026-11-22T12:54:43.591521+01:00",
+    "video_sha256": "776953c997e7055f3d7770b2e204b2b962672127ca4b6c9432842fd780de8b9b",
+    "caption_head": "Les électeurs de Glucksmann vont me détester (Raphaël Glucks",
+    "duration_s": 28.666667,
+    "container_id": "18129363880677183",
+    "upload": "url_studio",
+    "media_id": "18096817043674856",
+    "published_at": "2026-11-22T12:55:36.800921+01:00",
+    "permalink": "https://www.instagram.com/reel/DgCvuf_CCUm/",
+    "_this_run": true
   }
 ]
