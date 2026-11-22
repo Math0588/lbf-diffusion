@@ -120,5 +120,16 @@
     "published_at": "2026-11-22T10:33:45.516916+01:00",
     "permalink": "https://www.instagram.com/reel/DgCffqhEixm/",
     "_this_run": true
+  },
+  {
+    "episode_id": "bdv-m001",
+    "status": "failed",
+    "attempt_at": "2026-11-22T10:35:53.054267+01:00",
+    "video_sha256": "3548529a0140315a60f6c567052a4ea4c03421c45ace280ddaa3869a838f58e1",
+    "caption_head": "Les électeurs de Bardella vont me détester (Jordan Bardella,",
+    "container_id": "18129339658677183",
+    "upload": "url_studio",
+    "error": "Error: Media upload has failed with error code 2207077",
+    "_this_run": true
   }
 ]
