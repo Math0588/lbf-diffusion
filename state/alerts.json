@@ -28,5 +28,20 @@
     "at": "2026-11-22T08:05:43.535436+01:00",
     "kind": "reserve",
     "text": "Réserve basse : 0 vidéo(s) après celle-ci."
+  },
+  {
+    "at": "2026-11-22T10:26:37.831926+01:00",
+    "kind": "reserve",
+    "text": "Réserve basse : 2 vidéo(s) après celle-ci."
+  },
+  {
+    "at": "2026-11-22T10:27:50.620246+01:00",
+    "kind": "reserve",
+    "text": "Réserve basse : 1 vidéo(s) après celle-ci."
+  },
+  {
+    "at": "2026-11-22T10:28:12.661853+01:00",
+    "kind": "publication",
+    "text": "bdv-m001 : conteneur ERROR (Error: Media upload has failed with error code 2207077)"
   }
 ]

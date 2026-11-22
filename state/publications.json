@@ -85,5 +85,27 @@
     "media_id": "17898326652681625",
     "published_at": "2026-11-22T08:07:15.971749+01:00",
     "permalink": "https://www.instagram.com/reel/DgCOuCEgSqp/"
+  },
+  {
+    "episode_id": "mrv-s01e01",
+    "status": "published",
+    "attempt_at": "2026-11-22T10:26:37.979750+01:00",
+    "video_sha256": "37d2ed181238e6a906490bf24ce96ada49902dee5c9bf779d4009d808bd8b97b",
+    "caption_head": "Marineville : la ville où Marine Le Pen décide de tout.\n\nPar",
+    "container_id": "18129337945677183",
+    "upload": "url_studio",
+    "media_id": "18469004521187276",
+    "published_at": "2026-11-22T10:27:30.497307+01:00",
+    "permalink": "https://www.instagram.com/reel/DgCexuxjgR4/"
+  },
+  {
+    "episode_id": "bdv-m001",
+    "status": "failed",
+    "attempt_at": "2026-11-22T10:27:50.784208+01:00",
+    "video_sha256": "3548529a0140315a60f6c567052a4ea4c03421c45ace280ddaa3869a838f58e1",
+    "caption_head": "Les électeurs de Bardella vont me détester (Jordan Bardella,",
+    "container_id": "18129338170677183",
+    "upload": "url_studio",
+    "error": "Error: Media upload has failed with error code 2207077"
   }
 ]
