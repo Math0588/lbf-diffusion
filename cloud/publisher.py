@@ -329,9 +329,12 @@ def publish_youtube(item):
         return
     folder = RESERVE / item["episode_id"]
     caption = (folder / "caption.txt").read_text(encoding="utf-8")
-    title = caption.splitlines()[0][:90]
+    seo = json.loads((folder / "seo.json").read_text(encoding="utf-8")) if (folder / "seo.json").exists() else {}
+    title = seo.get("yt_title") or caption.splitlines()[0][:90]
+    desc = seo.get("yt_description") or caption
+    tags = seo.get("yt_tags") or ["humour politique", "politique française", "parodie"]
     try:
-        r = youtube.upload(ensure_local(item["episode_id"]), title, caption, ["satire", "humour", "politique", "danscetteville"])
+        r = youtube.upload(ensure_local(item["episode_id"]), title, desc, tags)
         yts.append({"episode_id": item["episode_id"], "at": now().isoformat(), **r})
         log(f"YouTube : {r.get('url')} ({r.get('privacy')})")
     except Exception as e:
