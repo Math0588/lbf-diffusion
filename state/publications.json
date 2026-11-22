@@ -363,5 +363,33 @@
     "media_id": "18122853688748208",
     "published_at": "2026-11-22T14:20:06.359405+01:00",
     "permalink": "https://www.instagram.com/reel/DgC5ZexANNF/"
+  },
+  {
+    "episode_id": "rnv-s01e09",
+    "status": "published",
+    "attempt_at": "2026-11-22T14:21:28.266721+01:00",
+    "video_sha256": "fcfecd8aac5962e66ecd64e988c77b1305c882484371d6a07c24f873c04048dc",
+    "caption_head": "Rinerville : la ville où Teddy Riner décide de tout.\n\nHumour",
+    "duration_s": 29.333333,
+    "container_id": "18129382240677183",
+    "upload": "url_studio",
+    "media_id": "18088409135708253",
+    "published_at": "2026-11-22T14:22:19.258216+01:00",
+    "premier_commentaire": "refusé (400)",
+    "permalink": "https://www.instagram.com/reel/DgC5pi3CRlf/"
+  },
+  {
+    "episode_id": "dfv-s01e13",
+    "status": "published",
+    "attempt_at": "2026-11-22T14:22:40.217653+01:00",
+    "video_sha256": "ef88960d368ce4640cb70b8069e730a9012030d5b6dfa531cf50ef7ba6985af5",
+    "caption_head": "Les électeurs de Durif vont me détester (Sylvain Durif, Duri",
+    "duration_s": 28.0,
+    "container_id": "18129382750677183",
+    "upload": "url_studio",
+    "media_id": "18038992151664095",
+    "published_at": "2026-11-22T14:23:31.386185+01:00",
+    "premier_commentaire": "refusé (400)",
+    "permalink": "https://www.instagram.com/reel/DgC5yYNkeJF/"
   }
 ]
