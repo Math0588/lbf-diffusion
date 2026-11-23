@@ -524,7 +524,20 @@ def check_upload():
     return 0 if ok else 1
 
 
+def ping() -> int:
+    """Test du jeton en simple lecture (aucun envoi, aucune publication) : le compte répond-il ?"""
+    try:
+        r = call("GET", env("IG_USER_ID"), {"fields": "username"})
+        log(f"JETON OK : accès au compte @{r.get('username')}")
+        return 0
+    except ApiError as e:
+        log(f"JETON REFUSÉ : {e.body[:300]}")
+        return 1
+
+
 def main():
+    if "--ping" in sys.argv:
+        return ping()
     if "--check" in sys.argv:
         return check_upload()
     control = load("control.json", {"paused": False, "slot": "18:30"})

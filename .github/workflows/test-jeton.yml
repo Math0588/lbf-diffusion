@@ -1,0 +1,21 @@
+# Test du jeton Instagram en simple lecture (aucun envoi, aucune publication).
+name: Test du jeton
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Tester
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_GRAPH_VERSION: ${{ vars.IG_GRAPH_VERSION }}
+          IG_API_HOST: ${{ vars.IG_API_HOST }}
+        run: python cloud/publisher.py --ping
