@@ -597,5 +597,20 @@ def publish_next(queue, pubs, assets, studio) -> bool:
     return pub["status"] in ("published", "simulated")
 
 
+def auth_broken(e: Exception) -> bool:
+    """Meta ne reconnaît plus l'accès (jeton révoqué, app retirée du compte, secret de l'app changé…)."""
+    b = getattr(e, "body", "") or ""
+    return isinstance(e, ApiError) and "OAuthException" in b and any(
+        f'"code":{c}' in b.replace(" ", "") for c in (190, 200, 10, 102))
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except ApiError as e:
+        if not auth_broken(e):
+            raise
+        # pas d'échec GitHub (et pas de mail) à chaque passage : une alerte claire suffit, rien n'est publié
+        notify("token", "Meta refuse l'accès au compte Instagram : il faut générer un nouveau jeton et le "
+                        "coller dans le secret IG_ACCESS_TOKEN. Détail : " + e.body[:200])
+        sys.exit(0)
