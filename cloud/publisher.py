@@ -382,7 +382,8 @@ def publish_one(item, pubs):
     try:
         r = call("POST", f"{user_id}/media_publish", {"creation_id": c["id"]}, timeout=90)
         pub.update(status="published", media_id=r["id"], published_at=now().isoformat())
-        if from_studio and meta.get("premier_commentaire"):
+        # commentaire automatique désactivé (compte restreint le 22/11 : signal de spam) ; COMMENT_AUTO=true pour le remettre
+        if from_studio and meta.get("premier_commentaire") and env("COMMENT_AUTO") == "true":
             try:   # lance le débat : premier commentaire du compte (les deux camps face à face)
                 call("POST", f"{r['id']}/comments", {"message": meta["premier_commentaire"]})
                 pub["premier_commentaire"] = True
