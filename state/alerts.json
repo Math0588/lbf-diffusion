@@ -278,5 +278,10 @@
     "at": "2026-11-24T12:02:58.298729+01:00",
     "kind": "token",
     "text": "Meta refuse l'accès au compte Instagram : il faut générer un nouveau jeton et le coller dans le secret IG_ACCESS_TOKEN. Détail : {\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A8ukMOTYAlXyuntCPzEla2k\"}}"
+  },
+  {
+    "at": "2026-11-24T12:33:01.970073+01:00",
+    "kind": "token",
+    "text": "Meta refuse l'accès au compte Instagram : il faut générer un nouveau jeton et le coller dans le secret IG_ACCESS_TOKEN. Détail : {\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AWFMwkDFPkgfs0SHxY-AUwM\"}}"
   }
 ]
