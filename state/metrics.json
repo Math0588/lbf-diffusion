@@ -1,1 +1,184 @@
-[]
+[
+  {
+    "media_id": "18092132294697708",
+    "episode_id": "bdv-s01e01",
+    "window": "24h",
+    "at": "2026-11-24T05:25:33.038184+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A3yvjX60NjefAl5wD4gv2th\"}}"
+  },
+  {
+    "media_id": "18132675076694218",
+    "episode_id": "mcv-s01e01",
+    "window": "24h",
+    "at": "2026-11-24T05:25:33.342581+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AwAd0E68Qp3xkhssc1R2vR7\"}}"
+  },
+  {
+    "media_id": "18253012558311269",
+    "episode_id": "glv-s01e01",
+    "window": "24h",
+    "at": "2026-11-24T05:25:33.417476+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"Ad3z0RSBd5-ZhvQYtCwWLoP\"}}"
+  },
+  {
+    "media_id": "18130898608867927",
+    "episode_id": "bdv-s01e02",
+    "window": "24h",
+    "at": "2026-11-24T05:25:33.490317+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"ADX_0tUmNqQcK3YhLv9Jrpc\"}}"
+  },
+  {
+    "media_id": "17898326652681625",
+    "episode_id": "mlv-s01e01",
+    "window": "24h",
+    "at": "2026-11-24T05:25:33.562856+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AwGqhcJdJzoQcL0E2PLXvKp\"}}"
+  },
+  {
+    "media_id": "18469004521187276",
+    "episode_id": "mrv-s01e01",
+    "window": "24h",
+    "at": "2026-11-24T05:25:33.634944+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"ArhWQc4mJ5G7Ml1EZE4t3o7\"}}"
+  },
+  {
+    "media_id": "17977755426174947",
+    "episode_id": "mcv-s01e02",
+    "window": "24h",
+    "at": "2026-11-24T05:25:33.706271+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AyF75vLVgte298aGHsyFN9e\"}}"
+  },
+  {
+    "media_id": "18102790040413964",
+    "episode_id": "mlv-s01e03",
+    "window": "24h",
+    "at": "2026-11-24T05:25:33.807521+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A79cbYxozL9O6gwtYXtbLzW\"}}"
+  },
+  {
+    "media_id": "18110465207359154",
+    "episode_id": "mrv-s01e03",
+    "window": "24h",
+    "at": "2026-11-24T05:25:33.877260+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AVPkpWxoPZBklXQWFux0L2L\"}}"
+  },
+  {
+    "media_id": "18360974668223032",
+    "episode_id": "mlv-s01e11",
+    "window": "24h",
+    "at": "2026-11-24T05:25:33.947588+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"Apzvp1j0-7mIQ-a8bW8TWvm\"}}"
+  },
+  {
+    "media_id": "18099861149447141",
+    "episode_id": "mlv-s01e02",
+    "window": "24h",
+    "at": "2026-11-24T05:25:34.020298+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AtjfWt1eW09TrG6rpQvDlHQ\"}}"
+  },
+  {
+    "media_id": "18040968269850088",
+    "episode_id": "mrv-s01e09",
+    "window": "24h",
+    "at": "2026-11-24T05:25:34.091814+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A8o6CKb9_dmajD5fFw1o3U8\"}}"
+  },
+  {
+    "media_id": "17934677508422817",
+    "episode_id": "zmv-s01e13",
+    "window": "24h",
+    "at": "2026-11-24T05:25:34.170595+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AueLezSAF10k-6ZqZDwC6NV\"}}"
+  },
+  {
+    "media_id": "18349751776253082",
+    "episode_id": "mcv-s01e03",
+    "window": "24h",
+    "at": "2026-11-24T05:25:34.241813+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AtER2tR1tNKypi_qANgJkVq\"}}"
+  },
+  {
+    "media_id": "17920777251467467",
+    "episode_id": "bdv-s01e04",
+    "window": "24h",
+    "at": "2026-11-24T05:25:34.314975+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AOUWcL5i9bucN38CzfJfRi9\"}}"
+  },
+  {
+    "media_id": "18025154675948882",
+    "episode_id": "mlv-s01e06",
+    "window": "24h",
+    "at": "2026-11-24T05:25:34.536318+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AI4tTG02azjX-wHUhkzOZ89\"}}"
+  },
+  {
+    "media_id": "17917157775285272",
+    "episode_id": "bdv-s01e03",
+    "window": "24h",
+    "at": "2026-11-24T05:25:34.609394+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AKWzkH-ZLmZcghcc-mX6Dpf\"}}"
+  },
+  {
+    "media_id": "18111274544350781",
+    "episode_id": "zmv-s01e02",
+    "window": "24h",
+    "at": "2026-11-24T05:25:34.687190+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AeDkPjfT8lZMG800pD2x1tl\"}}"
+  },
+  {
+    "media_id": "18096817043674856",
+    "episode_id": "glv-s01e28",
+    "window": "24h",
+    "at": "2026-11-24T05:25:34.762227+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AkwFF6r9Ge9H1cTvJxsGMFH\"}}"
+  },
+  {
+    "media_id": "18034335767684506",
+    "episode_id": "glv-s01e02",
+    "window": "24h",
+    "at": "2026-11-24T05:25:34.839197+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AMpbt74OZCTSQFgB9feoGa1\"}}"
+  },
+  {
+    "media_id": "18102181256442449",
+    "episode_id": "mcv-s01e04",
+    "window": "24h",
+    "at": "2026-11-24T05:25:34.912961+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"ARv7MQofwQ8ET9lrvf1ebWe\"}}"
+  },
+  {
+    "media_id": "18124528289472834",
+    "episode_id": "zmv-m001",
+    "window": "24h",
+    "at": "2026-11-24T05:25:34.982944+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A1RQJB6b9pCLA21hzXBRry5\"}}"
+  },
+  {
+    "media_id": "18377724445215528",
+    "episode_id": "mrv-u06",
+    "window": "24h",
+    "at": "2026-11-24T05:25:35.053700+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A-zNcxFweEoo0lyTZ7sLIQo\"}}"
+  },
+  {
+    "media_id": "18122853688748208",
+    "episode_id": "mcv-m010",
+    "window": "24h",
+    "at": "2026-11-24T05:25:35.126385+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AkePWg_o9CbLwhsBhUJIoBi\"}}"
+  },
+  {
+    "media_id": "18088409135708253",
+    "episode_id": "rnv-s01e09",
+    "window": "24h",
+    "at": "2026-11-24T05:25:35.193537+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AWnS53upHMEAKCMhPC-DZTm\"}}"
+  },
+  {
+    "media_id": "18038992151664095",
+    "episode_id": "dfv-s01e13",
+    "window": "24h",
+    "at": "2026-11-24T05:25:35.261733+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A9oHyMhZZGW2F7vOQ_UpbO4\"}}"
+  }
+]
