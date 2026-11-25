@@ -215,5 +215,26 @@
     "window": "72h",
     "at": "2026-11-25T08:33:49.030137+01:00",
     "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A90tQ2WHS1DbnkbBC0CU8SK\"}}"
+  },
+  {
+    "media_id": "18469004521187276",
+    "episode_id": "mrv-s01e01",
+    "window": "72h",
+    "at": "2026-11-25T12:04:02.745305+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"APNJbjCpX4FxKaPcyFe77ZO\"}}"
+  },
+  {
+    "media_id": "17977755426174947",
+    "episode_id": "mcv-s01e02",
+    "window": "72h",
+    "at": "2026-11-25T12:04:02.984434+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"ANgd2sM5TR6EN8f3ebtv6f7\"}}"
+  },
+  {
+    "media_id": "18102790040413964",
+    "episode_id": "mlv-s01e03",
+    "window": "72h",
+    "at": "2026-11-25T12:04:03.155246+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"ALbC91c5YME6f5joWbKNau5\"}}"
   }
 ]
