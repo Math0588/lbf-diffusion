@@ -580,7 +580,7 @@ def main():
     for k in range(max(1, todo)):
         if k:
             log(f"Rafale : Reel {k + 1}/{todo}")
-            time.sleep(20)
+            time.sleep(int(control.get("burst_gap_s", 20)))   # espacement entre Reels d'une rafale
         r = publish_next(queue, pubs, assets, studio)
         if r is None:      # plus rien de prêt
             break
