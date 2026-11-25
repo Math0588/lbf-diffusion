@@ -1,6 +1,0 @@
-Crédits et licences
-- Voix : Piper fr_FR-siwis-medium — SIWIS French Speech Synthesis Database (CC BY 4.0) ; base Hi-Fi TTS reader 92 (CC BY 4.0).
-- Moteur de synthèse : Piper (piper1-gpl, GPL-3.0), utilisé localement.
-- Musique et effets : créations originales générées par le projet (lbf/audio.py).
-- Fontes : Archivo Black et Anton, SIL Open Font License 1.1.
-- Décors, personnages et mascotte : modélisés par le projet dans Blender (GPL pour le logiciel ; les rendus appartiennent au créateur).
