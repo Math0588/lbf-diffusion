@@ -2,11 +2,9 @@
   "paused": false,
   "slot": "18:30",
   "slots": [
-    "08:00",
     "12:00",
-    "17:00",
-    "20:00",
-    "22:00"
+    "18:00",
+    "21:00"
   ],
   "bursts": [
     {
@@ -71,5 +69,6 @@
   ],
   "priority_note": "Ordre : format v4 (situation précise, voix Gemini Charon) en tête ; puis le reste des nouvelles versions.",
   "min_video_date": "2026-11-25T21:20:00Z",
-  "min_video_date_note": "Ne publier que les nouvelles versions : vidéos déposées (ou remixées) après cette date."
+  "min_video_date_note": "Ne publier que les nouvelles versions : vidéos déposées (ou remixées) après cette date.",
+  "slots_note": "3 Reels par jour (choix du propriétaire, 25/11) : midi, sortie du travail, soirée."
 }
