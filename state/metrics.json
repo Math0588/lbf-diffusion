@@ -236,5 +236,40 @@
     "window": "72h",
     "at": "2026-11-25T12:04:03.155246+01:00",
     "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"ALbC91c5YME6f5joWbKNau5\"}}"
+  },
+  {
+    "media_id": "18110465207359154",
+    "episode_id": "mrv-s01e03",
+    "window": "72h",
+    "at": "2026-11-25T12:34:04.284067+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AuCzDh71C03sGyR1B2EM-sh\"}}"
+  },
+  {
+    "media_id": "18360974668223032",
+    "episode_id": "mlv-s01e11",
+    "window": "72h",
+    "at": "2026-11-25T12:34:04.427040+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AkhUd7-3oqnHSuxdbtlGZlk\"}}"
+  },
+  {
+    "media_id": "18099861149447141",
+    "episode_id": "mlv-s01e02",
+    "window": "72h",
+    "at": "2026-11-25T12:34:04.574577+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A48cm_06ewV4cn6Uqcsgfoq\"}}"
+  },
+  {
+    "media_id": "18040968269850088",
+    "episode_id": "mrv-s01e09",
+    "window": "72h",
+    "at": "2026-11-25T12:34:04.752747+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AUPE41P4zJqCuwrFo4-JNbW\"}}"
+  },
+  {
+    "media_id": "17934677508422817",
+    "episode_id": "zmv-s01e13",
+    "window": "72h",
+    "at": "2026-11-25T12:34:05.054987+01:00",
+    "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AcvLaa50X1E_F3MUIQvP_5Z\"}}"
   }
 ]
