@@ -15,5 +15,29 @@
       "count": 2
     }
   ],
-  "burst_gap_s": 240
+  "burst_gap_s": 240,
+  "exclude": [
+    "zmv-x01"
+  ],
+  "priority": [
+    "mlv-u01",
+    "bdv-u06",
+    "mcv-u01",
+    "zmv-u01",
+    "bdv-u01",
+    "mrv-u01",
+    "glv-u01",
+    "mcv-u02",
+    "mlv-u02",
+    "zmv-u02",
+    "mrv-u02",
+    "glv-u02",
+    "rnv-s01e01",
+    "dfv-s01e01",
+    "rnv-s01e02",
+    "dfv-s01e02",
+    "rnv-s01e03",
+    "dfv-s01e03"
+  ],
+  "priority_note": "Ordre : ultra (voix ElevenLabs d'abord) > Riner/Durif > mèmes > le reste ; série x écartée. Les ultra non listés passent aussi avant le reste."
 }

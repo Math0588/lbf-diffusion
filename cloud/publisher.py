@@ -289,6 +289,17 @@ def next_episode(queue, pubs, assets=frozenset(), studio=None):
             if it["id"] == wanted and wanted not in done:
                 return {"episode_id": it["id"], "source": "studio", "title": it.get("title")}
         return None
+    # 0 bis) ordre éditorial (state/control.json) : liste « priority », puis ultra > Riner/Durif > mèmes > reste
+    ctl = load("control.json", {})
+    done = done | set(ctl.get("exclude", []))
+    ids = {it["id"]: it for it in studio or []}
+    for pid in ctl.get("priority", []):
+        if pid in ids and pid not in done:
+            return {"episode_id": pid, "source": "studio", "title": ids[pid].get("title")}
+
+    def rank(i):
+        return 0 if "-u" in i else 1 if i.startswith(("rnv-", "dfv-")) else 3 if "-x" in i else 2
+    studio = sorted(studio or [], key=lambda it: rank(it["id"]))   # tri stable : ordre de fabrication conservé
     # 1) vidéos du studio cloud, dans l'ordre de fabrication (elles remplacent les anciennes versions locales)
     for it in studio or []:
         if it["id"] not in done:
