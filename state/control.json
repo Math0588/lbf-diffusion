@@ -61,5 +61,7 @@
     "rnv-s01e03",
     "dfv-s01e03"
   ],
-  "priority_note": "Ordre : 3 ultra remixés (nouveau son) > ultra v3 (teaser + son v2 + image fidèle à la voix) dès qu'ils sont prêts > autres ultra > Riner/Durif > mèmes ; série x écartée."
+  "priority_note": "Ordre : 3 ultra remixés (nouveau son) > ultra v3 (teaser + son v2 + image fidèle à la voix) dès qu'ils sont prêts > autres ultra > Riner/Durif > mèmes ; série x écartée.",
+  "min_video_date": "2026-11-25T21:20:00Z",
+  "min_video_date_note": "Ne publier que les nouvelles versions : vidéos déposées (ou remixées) après cette date."
 }

@@ -178,6 +178,18 @@ def gh(*args):
                           env={**os.environ, "GH_TOKEN": env("GH_TOKEN") or env("GITHUB_TOKEN")})
 
 
+def studio_dates() -> dict:
+    """Date de dépôt de chaque vidéo du studio (id → ISO). Sert à ne publier que les nouvelles versions."""
+    url = "repos/Math0588/lbf-studio/releases/tags/reserve"
+    try:
+        p = gh("api", url)
+        data = json.loads(p.stdout) if p.returncode == 0 else json.loads(_get("https://api.github.com/" + url))
+    except Exception:
+        return {}
+    return {a["name"][:-4]: a.get("updated_at") or a.get("created_at") or ""
+            for a in data.get("assets", []) if a["name"].endswith(".mp4")}
+
+
 def release_assets() -> set:
     """Noms des vidéos disponibles dans la release privée (vide si gh indisponible : on se fie au disque)."""
     try:
@@ -293,6 +305,13 @@ def next_episode(queue, pubs, assets=frozenset(), studio=None):
     ctl = load("control.json", {})
     done = done | set(ctl.get("exclude", []))
     ids = {it["id"]: it for it in studio or []}
+    cutoff = ctl.get("min_video_date")      # seulement les nouvelles versions (son v2, format v3, remix)
+    if cutoff and ids:
+        dates = studio_dates()
+        if not dates:
+            log("Dates des vidéos illisibles : rien publié ce passage (seules les nouvelles versions sont autorisées)")
+            return None
+        done = done | {i for i in ids if dates.get(i, "") < cutoff}
     for pid in ctl.get("priority", []):
         if pid in ids and pid not in done:
             return {"episode_id": pid, "source": "studio", "title": ids[pid].get("title")}
