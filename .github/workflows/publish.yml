@@ -47,6 +47,7 @@ jobs:
           IG_UPLOAD_METHOD: ${{ vars.IG_UPLOAD_METHOD }}
           IG_GRAPH_VERSION: ${{ vars.IG_GRAPH_VERSION }}
           IG_API_HOST: ${{ vars.IG_API_HOST }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           YT_ENABLED: ${{ vars.YT_ENABLED }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}

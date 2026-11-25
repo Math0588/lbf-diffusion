@@ -1,0 +1,20 @@
+# Envoie une notification d'essai sur le téléphone (appli ntfy).
+name: Test notification
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  notif:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Envoyer
+        env:
+          LIVE_PUBLISH: "true"
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          cd cloud && python3 -c "import publisher as P; P.phone('Le Bordel Français', 'Notifications activées : tu seras prévenu à chaque Reel publié.', 'https://www.instagram.com/lebordelfrancais/')"

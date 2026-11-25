@@ -89,10 +89,32 @@ def call(method, path, params=None, timeout=60):
         raise ApiError(e.code, e.read().decode(errors="replace"))
 
 
+NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "").strip() or "lbf-rt4302ma2hm2xx23yo"
+
+
+def phone(title: str, body: str, click: str | None = None, urgent: bool = False):
+    """Notification sur le téléphone du propriétaire (appli ntfy, abonnement au sujet NTFY_TOPIC). Jamais bloquant."""
+    if not NTFY_TOPIC or env("LIVE_PUBLISH") != "true":
+        return
+    msg = {"topic": NTFY_TOPIC, "title": title, "message": body, "tags": ["warning" if urgent else "tada"],
+           "priority": 4 if urgent else 3}
+    if click:
+        msg["click"] = click
+    try:
+        urllib.request.urlopen(urllib.request.Request("https://ntfy.sh/", data=json.dumps(msg).encode("utf-8"),
+                                                      headers={"Content-Type": "application/json"}, method="POST"),
+                               timeout=15)
+    except Exception as e:
+        log(f"notification téléphone impossible ({type(e).__name__})")
+
+
 def notify(kind, text):
     """Exception concrète → fichier d'alertes (visible dans le dépôt et le tableau de bord). Pas de demande
     d'approbation pour les opérations courantes."""
     alerts = load("alerts.json", [])
+    today = now().date().isoformat()
+    if kind in ("token", "publish") and not any(a.get("kind") == kind and a.get("at", "")[:10] == today for a in alerts):
+        phone("Le Bordel Français : publication bloquée", text[:300], urgent=True)
     alerts.append({"at": now().isoformat(), "kind": kind, "text": text})
     save("alerts.json", alerts[-200:])
     log(f"ALERTE {kind}: {text}")
@@ -638,6 +660,9 @@ def publish_next(queue, pubs, assets, studio) -> bool:
     save("publications.json", [{k: v for k, v in p.items() if k != "_this_run"} for p in pubs])
     publish_youtube(item)
     log(f"Résultat {pub['episode_id']} : {pub['status']} {pub.get('permalink', '')}")
+    if pub["status"] == "published":
+        titre = (item.get("title") or pub["episode_id"]).strip()
+        phone("Nouveau Reel publié", f"{titre}\n{pub.get('permalink', '')}", pub.get("permalink"))
     return pub["status"] in ("published", "simulated")
 
 
