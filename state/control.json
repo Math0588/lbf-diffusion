@@ -21,6 +21,13 @@
   ],
   "priority": [
     "glv-u07",
+    "mcv-u07",
+    "bdv-u07",
+    "mlv-u07",
+    "zmv-u07",
+    "mrv-u07",
+    "bdv-u08",
+    "mlv-u08",
     "bdv-u06",
     "mcv-u01",
     "zmv-u01",
@@ -62,7 +69,7 @@
     "rnv-s01e03",
     "dfv-s01e03"
   ],
-  "priority_note": "Ordre : 3 ultra remixés (nouveau son) > ultra v3 (teaser + son v2 + image fidèle à la voix) dès qu'ils sont prêts > autres ultra > Riner/Durif > mèmes ; série x écartée.",
+  "priority_note": "Ordre : format v4 (situation précise, voix Gemini Charon) en tête ; puis le reste des nouvelles versions.",
   "min_video_date": "2026-11-25T21:20:00Z",
   "min_video_date_note": "Ne publier que les nouvelles versions : vidéos déposées (ou remixées) après cette date."
 }
