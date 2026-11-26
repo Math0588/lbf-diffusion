@@ -334,6 +334,12 @@ def next_episode(queue, pubs, assets=frozenset(), studio=None):
             log("Dates des vidéos illisibles : rien publié ce passage (seules les nouvelles versions sont autorisées)")
             return None
         done = done | {i for i in ids if dates.get(i, "") < cutoff}
+    if ctl.get("ordre") == "recentes" and ids:      # la vidéo la plus récemment fabriquée part en premier
+        dates = studio_dates()
+        cands = [i for i in ids if i not in done]
+        if cands:
+            best = max(cands, key=lambda i: dates.get(i, ""))
+            return {"episode_id": best, "source": "studio", "title": ids[best].get("title")}
     for pid in ctl.get("priority", []):
         if pid in ids and pid not in done:
             return {"episode_id": pid, "source": "studio", "title": ids[pid].get("title")}

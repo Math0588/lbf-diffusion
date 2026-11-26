@@ -72,5 +72,7 @@
   "priority_note": "Ordre : format v4 (situation précise, voix Gemini Charon) en tête ; puis le reste des nouvelles versions.",
   "min_video_date": "2026-11-25T21:20:00Z",
   "min_video_date_note": "Ne publier que les nouvelles versions : vidéos déposées (ou remixées) après cette date.",
-  "slots_note": "3 Reels par jour (choix du propriétaire, 25/11) : midi, sortie du travail, soirée."
+  "slots_note": "3 Reels par jour (choix du propriétaire, 25/11) : midi, sortie du travail, soirée.",
+  "ordre": "recentes",
+  "ordre_note": "Demande du propriétaire (26/11) : les vidéos les plus récentes partent en premier."
 }
