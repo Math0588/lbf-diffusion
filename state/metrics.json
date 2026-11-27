@@ -362,5 +362,19 @@
     "window": "72h",
     "at": "2026-11-25T17:04:20.456147+01:00",
     "error": "{\"error\":{\"message\":\"Cannot call API for app 2280938602485007 on behalf of user 122093649657567221\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"As1YV-sZO7RGkp0WizrQkA1\"}}"
+  },
+  {
+    "media_id": "18129722776681233",
+    "episode_id": "mcv-x01",
+    "window": "24h",
+    "at": "2026-11-27T04:14:05.801176+01:00",
+    "error": "{\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"code\":10,\"type\":\"OAuthException\",\"fbtrace_id\":\"Az4pYkZIurOg0u-yDZ9kcD-\"}}"
+  },
+  {
+    "media_id": "18171119446468164",
+    "episode_id": "mlv-u01",
+    "window": "24h",
+    "at": "2026-11-27T04:14:05.964392+01:00",
+    "error": "{\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"code\":10,\"type\":\"OAuthException\",\"fbtrace_id\":\"AfIACyc5SKUOVFYGi1_QVvd\"}}"
   }
 ]
