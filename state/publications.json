@@ -490,5 +490,18 @@
     "media_id": "18123291595977919",
     "published_at": "2026-11-27T18:03:02.690595+01:00",
     "permalink": "https://www.instagram.com/reel/DgQK6lEt10l/"
+  },
+  {
+    "episode_id": "bdv-a001",
+    "status": "published",
+    "attempt_at": "2026-11-27T21:01:45.203397+01:00",
+    "video_sha256": "9a15e280316203362e4bf591840417925a2dfc8e7d890dbe9ea5b0d5dc10b838",
+    "caption_head": "Bardellaville : la ville où Jordan Bardella décide de tout.\n",
+    "duration_s": 28.133333,
+    "container_id": "18130386592677183",
+    "upload": "url_studio",
+    "media_id": "18158075557531266",
+    "published_at": "2026-11-27T21:02:33.542424+01:00",
+    "permalink": "https://www.instagram.com/reel/DgQfcxfyep6/"
   }
 ]
