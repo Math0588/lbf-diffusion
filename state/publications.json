@@ -477,5 +477,18 @@
     "media_id": "17964010275256698",
     "published_at": "2026-11-27T12:02:12.364295+01:00",
     "permalink": "https://www.instagram.com/reel/DgPhoWxhUHm/"
+  },
+  {
+    "episode_id": "zmv-u07",
+    "status": "published",
+    "attempt_at": "2026-11-27T18:01:31.247478+01:00",
+    "video_sha256": "1b2e1db3c0c85c3d1f6108a65852bdd226dbb0e4193e0e13e3951de18f029632",
+    "caption_head": "Zemmourville : la ville où Éric Zemmour décide de tout.\n\nPar",
+    "duration_s": 27.533333,
+    "container_id": "18130360963677183",
+    "upload": "url_studio",
+    "media_id": "18123291595977919",
+    "published_at": "2026-11-27T18:03:02.690595+01:00",
+    "permalink": "https://www.instagram.com/reel/DgQK6lEt10l/"
   }
 ]
