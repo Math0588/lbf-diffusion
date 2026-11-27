@@ -383,5 +383,12 @@
     "window": "24h",
     "at": "2026-11-27T12:31:15.987874+01:00",
     "error": "{\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"code\":10,\"type\":\"OAuthException\",\"fbtrace_id\":\"AxigAZ7S5m8mLK_Yc6jcVNx\"}}"
+  },
+  {
+    "media_id": "18054355592607140",
+    "episode_id": "mrv-u07",
+    "window": "24h",
+    "at": "2026-11-27T18:31:31.576068+01:00",
+    "error": "{\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"code\":10,\"type\":\"OAuthException\",\"fbtrace_id\":\"Ao2M3YfVRlvoeWtSfn5apJd\"}}"
   }
 ]
