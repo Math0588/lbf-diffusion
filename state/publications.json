@@ -529,5 +529,18 @@
     "media_id": "18146770759613269",
     "published_at": "2026-11-28T18:03:45.812921+01:00",
     "permalink": "https://www.instagram.com/reel/DgSvvyHsfL7/"
+  },
+  {
+    "episode_id": "glv-a001",
+    "status": "published",
+    "attempt_at": "2026-11-28T21:02:33.037376+01:00",
+    "video_sha256": "02ba3a6c0b0296913798f423dd86e0b25633c369418da9afa44774a87e6c6422",
+    "caption_head": "Raphaël Glucksmann maire de sa propre ville : on a testé.\n\nH",
+    "duration_s": 27.066667,
+    "container_id": "18130591999677183",
+    "upload": "url_studio",
+    "media_id": "18093742232705079",
+    "published_at": "2026-11-28T21:04:04.482777+01:00",
+    "permalink": "https://www.instagram.com/reel/DgTEa2vJXb0/"
   }
 ]
