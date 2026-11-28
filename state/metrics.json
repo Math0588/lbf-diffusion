@@ -411,5 +411,12 @@
     "window": "24h",
     "at": "2026-11-28T18:32:30.788497+01:00",
     "error": "{\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"code\":10,\"type\":\"OAuthException\",\"fbtrace_id\":\"AZ2msY-44fwiasrxVCRkwHU\"}}"
+  },
+  {
+    "media_id": "18158075557531266",
+    "episode_id": "bdv-a001",
+    "window": "24h",
+    "at": "2026-11-28T21:32:32.618803+01:00",
+    "error": "{\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"code\":10,\"type\":\"OAuthException\",\"fbtrace_id\":\"APbApFr9kQFWNXQutKFURjO\"}}"
   }
 ]
